@@ -341,7 +341,7 @@ def get_quests_by_level(quests, min_level, max_level):
 # DISPLAY FUNCTIONS
 # ============================================================================
 
-def display_quest_info(quest_data):
+def display_quest_info(q):
     """
     Display formatted quest information
     
