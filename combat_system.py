@@ -2,9 +2,9 @@
 COMP 163 - Project 3: Quest Chronicles
 Combat System Module - Starter Code
 
-Name: [Your Name Here]
+Name: Chloe Barnes
 
-AI Usage: [Document any AI assistance used]
+AI Usage: AI was used to make Readme, help make variable names, and make comments.
 
 Handles combat mechanics
 """
