@@ -8,6 +8,10 @@
 
 Build a complete modular RPG adventure game demonstrating mastery of **exceptions and modules**.
 
+## Code Overview
+
+The project is implemented across seven files that handle distinct game components. This includes data loading and validation, character management (stats, leveling, saving), inventory and equipment, quest tracking (acceptance and rewards), and turn-based combat. The entire system is held together by the central main.py file, which orchestrates the game loop and uses custom exceptions to manage all errors gracefully.
+
 ## Getting Started
 
 ### Step 1: Accept Assignment
