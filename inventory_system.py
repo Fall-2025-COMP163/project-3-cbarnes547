@@ -168,11 +168,6 @@ def use_item(character, item_id, item_data):
     return f"You used {item_id} and gained {stat_name} +{value}."
 
 
-def _handle_equip_logic(character, item_id, item_data, slot_key, unequip_func):
-    """Internal helper to manage equip/unequip flow."""
-    # 1. Check if something is currently equipped in this slot
-    pass
-
 def equip_weapon(character, item_id, item_data):
     """
     Equip a weapon
@@ -238,11 +233,6 @@ def equip_weapon(character, item_id, item_data):
 
     return f"You equipped {item_id} (+{stat_name} {value})."
 
-def equip_item(character, item_id, item_data):
-    """
-    Generic function to handle both weapon and armor equipping.
-    """
-    pass
     
 def equip_armor(character, item_id, item_data):
     """
@@ -305,10 +295,7 @@ def equip_armor(character, item_id, item_data):
 
     return f"You equipped {item_id} (+{stat_name} {value})."
 
-def _handle_unequip_logic(character, slot_key):
-    """Internal helper to manage unequip flow."""
-    pass
-    
+
 def unequip_weapon(character):
     """
     Remove equipped weapon and return it to inventory
