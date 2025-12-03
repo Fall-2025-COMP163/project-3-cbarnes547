@@ -2,9 +2,9 @@
 COMP 163 - Project 3: Quest Chronicles
 Main Game Module - Starter Code
 
-Name: [Your Name Here]
+Name: Chloe Barnes
 
-AI Usage: [Document any AI assistance used]
+AI Usage: AI was used to make Readme, help make variable names, and make comments.
 
 This is the main game file that ties all modules together.
 Demonstrates module integration and complete game flow.
