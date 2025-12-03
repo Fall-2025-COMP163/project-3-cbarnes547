@@ -2,9 +2,9 @@
 COMP 163 - Project 3: Quest Chronicles
 Quest Handler Module - Starter Code
 
-Name: [Your Name Here]
+Name: Chloe Barnes
 
-AI Usage: [Document any AI assistance used]
+AI Usage: AI was used to make Readme, help make variable names, and make comments.
 
 This module handles quest management, dependencies, and completion.
 """
@@ -441,84 +441,4 @@ if __name__ == "__main__":
     # except QuestRequirementsNotMetError as e:
     #     print(f"Cannot accept: {e}")
 
-    test_char = {
-        'name': 'TestHero',
-        'level': 1,
-        'active_quests': [],
-        'completed_quests': [],
-        'experience': 0,
-        'gold': 100
-    }
     
-    test_quests = {
-        'q_1': {
-            'quest_id': 'q_1', 'title': 'The Starter', 'description': 'Lvl 1 Quest', 
-            'reward_xp': 50, 'reward_gold': 25, 'required_level': 1, 'prerequisite': 'NONE'
-        },
-        'q_2': {
-            'quest_id': 'q_2', 'title': 'Mid Challenge', 'description': 'Lvl 3 Quest', 
-            'reward_xp': 150, 'reward_gold': 75, 'required_level': 3, 'prerequisite': 'q_1'
-        },
-        'q_3': {
-            'quest_id': 'q_3', 'title': 'End Game', 'description': 'Lvl 5 Quest', 
-            'reward_xp': 500, 'reward_gold': 250, 'required_level': 5, 'prerequisite': 'q_2'
-        },
-        'invalid_prereq': {
-            'quest_id': 'invalid_prereq', 'title': 'Broken', 'description': 'Requires fake', 
-            'reward_xp': 1, 'reward_gold': 1, 'required_level': 1, 'prerequisite': 'fake_quest_id'
-        }
-    }
-    
-    # --- Test 1: Prerequisite Validation ---
-    print("\n--- Test 1: Prerequisite Validation ---")
-    try:
-        validate_quest_prerequisites(test_quests)
-        print("FAIL: Prerequisite validation should have raised QuestNotFoundError.")
-    except QuestNotFoundError as e:
-        print(f"SUCCESS: Prerequisite validation error caught: {e}")
-        # Remove invalid quest for further tests
-        del test_quests['invalid_prereq']
-    
-    # --- Test 2: Acceptance (Level/Prereq) ---
-    print("\n--- Test 2: Acceptance Checks ---")
-    try:
-        accept_quest(test_char, 'q_2', test_quests) # Level 1 trying Lvl 3 quest
-    except InsufficientLevelError as e:
-        print(f"SUCCESS: InsufficientLevelError caught: {e}")
-        
-    try:
-        test_char['level'] = 3
-        accept_quest(test_char, 'q_2', test_quests) # Lvl 3 trying Q2 (requires Q1)
-    except QuestRequirementsNotMetError as e:
-        print(f"SUCCESS: QuestRequirementsNotMetError caught: {e}")
-        
-    # --- Test 3: Accept and Complete ---
-    print("\n--- Test 3: Accept and Complete ---")
-    try:
-        # Accept Q1 (Lvl 3 is fine, no prereq)
-        accept_quest(test_char, 'q_1', test_quests)
-        print(f"SUCCESS: Accepted q_1. Active: {test_char['active_quests']}")
-        
-        # Complete Q1
-        rewards = complete_quest(test_char, 'q_1', test_quests)
-        print(f"SUCCESS: Completed q_1. Rewards: {rewards}")
-        print(f"Active: {test_char['active_quests']}, Completed: {test_char['completed_quests']}")
-        print(f"XP: {test_char['experience']}, Gold: {test_char['gold']}")
-        
-        # Now Q2 should be available
-        accept_quest(test_char, 'q_2', test_quests)
-        print(f"SUCCESS: Accepted q_2 after completing q_1.")
-        
-    except Exception as e:
-        print(f"FAIL: Unexpected error during accept/complete: {e}")
-        
-    # --- Test 4: Tracking and Statistics ---
-    print("\n--- Test 4: Tracking and Stats ---")
-    print(f"Is q_1 completed? {is_quest_completed(test_char, 'q_1')}")
-    print(f"Can accept q_3? {can_accept_quest(test_char, 'q_3', test_quests)}")
-    
-    chain = get_quest_prerequisite_chain('q_3', test_quests)
-    print(f"Q3 Prerequisite Chain: {chain}")
-    
-    display_character_quest_progress(test_char, test_quests)
-    display_quest_info(test_quests['q_2'])
