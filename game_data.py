@@ -317,28 +317,3 @@ if __name__ == "__main__":
     # except InvalidDataFormatError as e:
     #     print(f"Invalid item format: {e}")
 
-    create_default_data_files()
-    
-    # --- Test 2: Load Quests ---
-    print("\n--- Testing Quest Loading ---")
-    try:
-        quests = load_quests()
-        print(f"SUCCESS: Loaded {len(quests)} quests. Example: {quests['the_lost_amulet']['title']}")
-        validate_quest_data(quests['the_lost_amulet'])
-        print("SUCCESS: Quest data passed validation.")
-    except (MissingDataFileError, InvalidDataFormatError, CorruptedDataError) as error:
-        print(f"FAIL: Quest Loading Error: {error}")
-    
-    # --- Test 3: Load Items ---
-    print("\n--- Testing Item Loading ---")
-    try:
-        items = load_items()
-        print(f"SUCCESS: Loaded {len(items)} items. Example: {items['healing_potion']['effect']}")
-        validate_item_data(items['leather_armor'])
-        print("SUCCESS: Item data passed validation.")
-    except (MissingDataFileError, InvalidDataFormatError, CorruptedDataError) as error:
-        print(f"FAIL: Item Loading Error: {error}")
-
-    # Example of how to manually test an InvalidDataFormatError:
-    # 1. Manually edit data/quests.txt and change 'REWARD_XP: 100' to 'REWARD_XP: abc'.
-    # 2. Re-run this block to see the exception raised.
